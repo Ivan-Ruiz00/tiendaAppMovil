@@ -35,4 +35,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#222'
         ,
     },
+    textoBoton: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
 });
