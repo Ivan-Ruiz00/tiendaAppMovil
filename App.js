@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Producto from './components/Producto';
+import { useState } from 'react';
 export default function App() {
   const productos = [
     {
