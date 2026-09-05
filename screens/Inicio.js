@@ -1,65 +1,38 @@
-import {
-    View,
-    Text,
-    StyleSheet,
-    ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Producto from '../components/Producto';
-export default function Inicio({ navigation }) {
-    const productos = [
-        {
-            id: 1,
-            nombre: 'Laptop'
-            ,
-            precio: 2500000,
-            descripcion: 'Laptop para trabajo y estudio'
-            ,
-        },
-        {
-            id: 2,
-            nombre: 'Mouse'
-            ,
-            precio: 80000,
-            descripcion: 'Mouse inalámbrico'
-            ,
-        },
-        {
-            id: 3,
-            nombre: 'Teclado'
-            ,
-            precio: 150000,
-            descripcion: 'Teclado mecánico'
-            ,
-        },
-    ];
-    function verDetalle(producto) {
-        navigation.navigate(
-            'DetalleProducto'
-            ,
-            {
-                producto: producto,
-            }
-        );
-    }
-    return (
-        Productos(
-            productos.map((producto) => (
-                verDetalle(producto)
 
-            )
-            )
-        )
-    )
-};
+export default function Inicio({ navigation, productos, agregarAlCarrito }) {
+  function verDetalle(producto) {
+    navigation.navigate('DetalleProducto', { producto });
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Tienda Virtual</Text>
+      <ScrollView>
+        {productos.map((producto) => (
+          <Producto
+            key={producto.id}
+            producto={producto}
+            onAgregar={() => {
+              agregarAlCarrito(producto);
+              navigation.navigate('Carrito');
+            }}
+          />
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-    },
-    titulo: {
-        fontSize: 28,
-        fontWeight: 'bold'
-        ,
-        marginBottom: 20,
-    },
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  titulo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
 });

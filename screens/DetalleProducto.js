@@ -4,26 +4,22 @@ import {
     StyleSheet,
     Pressable,
 } from 'react-native';
-export default function DetalleProducto({ route, navigation }) {
+export default function DetalleProducto({ route, navigation, agregarAlCarrito }) {
     const { producto } = route.params;
     return (
         <View style={styles.container}>
-            <Text style={styles.nombre}>
-                {producto.nombre}
-            </Text>
-            <Text style={styles.descripcion}>
-                {producto.descripcion}
-            </Text>
-            <Text style={styles.precio}>
-                ${producto.precio}
-            </Text>
+            <Text style={styles.nombre}>{producto.nombre}</Text>
+            <Text style={styles.descripcion}>{producto.descripcion}</Text>
+            <Text style={styles.precio}>${producto.precio}</Text>
+
             <Pressable
                 style={styles.boton}
-                onPress={() => navigation.navigate('Carrito')}
+                onPress={() => {
+                    agregarAlCarrito(producto);
+                    navigation.navigate('Carrito');
+                }}
             >
-                <Text style={styles.textoBoton}>
-                    Agregar al carrito
-                </Text>
+                <Text style={styles.textoBoton}>Agregar al carrito</Text>
             </Pressable>
         </View>
     );
@@ -32,13 +28,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        justifyContent: 'center'
-        ,
+        justifyContent: 'center',
     },
     nombre: {
         fontSize: 30,
-        fontWeight: 'bold'
-        ,
+        fontWeight: 'bold',
         marginBottom: 15,
     },
     descripcion: {
@@ -47,23 +41,18 @@ const styles = StyleSheet.create({
     },
     precio: {
         fontSize: 24,
-        fontWeight: 'bold'
-        ,
+        fontWeight: 'bold',
         marginBottom: 30,
     },
     boton: {
         padding: 15,
         borderRadius: 8,
-        alignItems: 'center'
-        ,
-        backgroundColor: '#222'
-        ,
+        alignItems: 'center',
+        backgroundColor: '#222',
     },
     textoBoton: {
-        color: '#fff'
-        ,
+        color: '#fff',
         fontSize: 16,
-        fontWeight: 'bold'
-        ,
+        fontWeight: 'bold',
     },
 });
