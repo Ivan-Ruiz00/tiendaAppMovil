@@ -2,6 +2,13 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Producto from './components/Producto';
 import { useState } from 'react';
 export default function App() {
+  const [carrito, setCarrito] = useState([]);
+  function agregarAlCarrito(producto) {
+    setCarrito([
+      ...carrito,
+      producto
+    ]);
+  }
   const productos = [
     {
       id: 1, nombre: 'Laptop'
