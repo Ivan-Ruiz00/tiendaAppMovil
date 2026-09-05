@@ -1,6 +1,12 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useState } from 'react';
 import Producto from './components/Producto';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Inicio from './screens/Inicio';
+import DetalleProducto from './screens/DetalleProducto';
+import Carrito from './screens/Carrito';
+const Stack = createNativeStackNavigator();
 export default function App() {
   const [carrito, setCarrito] = useState([]);
   const productos = [
@@ -20,19 +26,35 @@ export default function App() {
   function agregarAlCarrito(producto) {
     setCarrito([...carrito, producto]);
   }
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Tienda Virtual</Text>
-      <ScrollView>
-        {productos.map((producto) => (
-          <Producto
-            key={producto.id}
-            producto={producto}
-            onAgregar={agregarAlCarrito}
-          />
-        ))}
-      </ScrollView>
-    </View>
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Inicio"
+          component={Inicio}
+          options={{
+            title: 'Tienda Virtual'
+            ,
+          }}
+        />
+        <Stack.Screen
+          name="DetalleProducto"
+          component={DetalleProducto}
+          options={{
+            title: 'Detalle del producto'
+            ,
+          }}
+        />
+        <Stack.Screen
+          name="Carrito"
+          component={Carrito}
+          options={{
+            title: 'Mi carrito'
+            ,
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
