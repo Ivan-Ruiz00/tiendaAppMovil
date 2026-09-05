@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-export default function Producto({ producto}) {
+export default function Producto({ producto, onAgregar }) {
     return (
         <View style={styles.card}>
             <Text style={styles.nombre}>{producto.nombre}</Text>
@@ -7,7 +7,7 @@ export default function Producto({ producto}) {
             <Text style={styles.precio}>${producto.precio}</Text>
             <Pressable
                 style={styles.boton}
-                onPress={() => agregarAlCarrito(producto)}
+                onPress={() => onAgregar(producto)}
             >
                 <Text style={styles.textoBoton}>Agregar al carrito</Text>
             </Pressable>
