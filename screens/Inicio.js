@@ -1,8 +1,8 @@
 import {
     View,
-        Text,
-        StyleSheet,
-        ScrollView,
+    Text,
+    StyleSheet,
+    ScrollView,
 } from 'react-native';
 import Producto from '../components/Producto';
 export default function Inicio({ navigation }) {
