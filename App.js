@@ -1,34 +1,24 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Producto from './components/Producto';
 import { useState } from 'react';
+import Producto from './components/Producto';
 export default function App() {
   const [carrito, setCarrito] = useState([]);
-  function agregarAlCarrito(producto) {
-    setCarrito([
-      ...carrito,
-      producto
-    ]);
-  }
   const productos = [
     {
-      id: 1, nombre: 'Laptop'
-      ,
+      id: 1, nombre: 'Laptop',
       precio: 2500000, descripcion: 'Para trabajo y estudio'
     },
     {
-      id: 2, nombre: 'Mouse'
-      ,
+      id: 2, nombre: 'Mouse',
       precio: 80000, descripcion: 'Mouse inalámbrico'
     },
     {
-      id: 3, nombre: 'Teclado'
-      ,
+      id: 3, nombre: 'Teclado',
       precio: 150000, descripcion: 'Teclado mecánico'
     },
   ];
   function agregarAlCarrito(producto) {
-    console.log('Producto agregado:'
-      , producto.nombre);
+    setCarrito([...carrito, producto]);
   }
   return (
     <View style={styles.container}>
