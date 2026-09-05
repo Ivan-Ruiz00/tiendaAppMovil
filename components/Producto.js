@@ -14,3 +14,25 @@ export default function Producto({ producto, onAgregar }) {
         </View>
     );
 }
+const styles = StyleSheet.create({
+    card: {
+        backgroundColor: '#ffffff'
+        ,
+        padding: 20,
+        marginBottom: 15,
+        borderRadius: 10,
+        elevation: 3,
+    },
+    nombre: { fontSize: 20, fontWeight: 'bold' },
+    descripcion: { marginTop: 8, fontSize: 15 },
+    precio: { marginTop: 10, fontSize: 18, fontWeight: 'bold' },
+    boton: {
+        marginTop: 15,
+        padding: 12,
+        borderRadius: 8,
+        alignItems: 'center'
+        ,
+        backgroundColor: '#222'
+        ,
+    },
+});
