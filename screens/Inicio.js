@@ -1,7 +1,16 @@
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Producto from '../components/Producto';
 
-export default function Inicio({ navigation, productos, agregarAlCarrito }) {
+export default function Inicio({ navigation }) {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.tienda.com/productos')
+      .then((res) => res.json())
+      .then((data) => setProductos(data));
+  }, []);
+
   function verDetalle(producto) {
     navigation.navigate('DetalleProducto', { producto });
   }
@@ -14,10 +23,7 @@ export default function Inicio({ navigation, productos, agregarAlCarrito }) {
           <Producto
             key={producto.id}
             producto={producto}
-            onAgregar={() => {
-              agregarAlCarrito(producto);
-              navigation.navigate('Carrito');
-            }}
+            onVerDetalle={verDetalle}
           />
         ))}
       </ScrollView>

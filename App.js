@@ -10,27 +10,6 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [carrito, setCarrito] = useState([]);
 
-  const productos = [
-    {
-      id: 1,
-      nombre: 'Laptop',
-      precio: 2500000,
-      descripcion: 'Para trabajo y estudio',
-    },
-    {
-      id: 2,
-      nombre: 'Mouse',
-      precio: 80000,
-      descripcion: 'Mouse inalámbrico',
-    },
-    {
-      id: 3,
-      nombre: 'Teclado',
-      precio: 150000,
-      descripcion: 'Teclado mecánico',
-    },
-  ];
-
   function agregarAlCarrito(producto) {
     setCarrito((prev) => [...prev, producto]);
   }
@@ -42,7 +21,6 @@ export default function App() {
           {(props) => (
             <Inicio
               {...props}
-              productos={productos}
               carrito={carrito}
               agregarAlCarrito={agregarAlCarrito}
             />
